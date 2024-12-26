@@ -1,4 +1,4 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -23,29 +23,17 @@ int getAvgScore(int array[], int size)
 
 void sort(int array[], int size, int order = 1)
 {
-	cout << ((order == 1) ? "ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬!" : "ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬!") << endl;
+	cout << ((order == 1) ? "¿À¸§Â÷¼ø Á¤·Ä!" : "³»¸²Â÷¼ø Á¤·Ä!") << endl;
 
 	for (int i = 0; i < size - 1; i++)
 	{
 		for (int j = 0; j < size - i - 1; j++)
 		{
-			if (order == 1)
+			if (order == 1 ? (array[j] > array[j + 1]) : (array[j] < array[j + 1]))
 			{
-				if (array[j] > array[j + 1])
-				{
-					int temp = array[j];
-					array[j] = array[j + 1];
-					array[j + 1] = temp;
-				}
-			}
-			else if (order == 2)
-			{
-				if (array[j] < array[j + 1])
-				{
-					int temp = array[j];
-					array[j] = array[j + 1];
-					array[j + 1] = temp;
-				}
+				int temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
 			}
 		}
 	}
@@ -54,7 +42,7 @@ void sort(int array[], int size, int order = 1)
 int main()
 {
 	int scoreArray[5];
-	cout << "5ê°œì˜ ê³¼ëª© ì„±ì ì„ ìž…ë ¥í•˜ì„¸ìš”" << endl;
+	cout << "5°³ÀÇ °ú¸ñ ¼ºÀûÀ» ÀÔ·ÂÇÏ¼¼¿ä" << endl;
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -65,7 +53,7 @@ int main()
 	int totalScore = getTotalScore(scoreArray, 5);
 	int avgScore = getAvgScore(scoreArray, 5);
 
-	cout << "5ê°œ ê³¼ëª© ì ìˆ˜ì˜ ì´í•©ì€ " << totalScore << "ì  ì´ê³  í‰ê· ì€ " << avgScore << "ì  ìž…ë‹ˆë‹¤." << endl;
+	cout << "5°³ °ú¸ñ Á¡¼öÀÇ ÃÑÇÕÀº " << totalScore << "Á¡ ÀÌ°í Æò±ÕÀº " << avgScore << "Á¡ ÀÔ´Ï´Ù." << endl;
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -75,17 +63,17 @@ int main()
 	int order = 0;
 	while (true)
 	{
-		cout << "ì›í•˜ëŠ” ì •ë ¬ ë°©í–¥ì„ ìž…ë ¥í•˜ì„¸ìš” (ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬-1, ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬-2, ì¢…ë£Œ-9)" << endl;
+		cout << "¿øÇÏ´Â Á¤·Ä ¹æÇâÀ» ÀÔ·ÂÇÏ¼¼¿ä (¿À¸§Â÷¼ø Á¤·Ä-1, ³»¸²Â÷¼ø Á¤·Ä-2, Á¾·á-9)" << endl;
 		cin >> order;
 
 		if (order == 9)
 		{
-			cout << "í”„ë¡œê·¸ëž¨ ì¢…ë£Œ!!!" << endl;
-			break; 
+			cout << "ÇÁ·Î±×·¥ Á¾·á!!!" << endl;
+			break;
 		}
 
 		sort(scoreArray, 5, order);
-	
+
 		for (int i = 0; i < 5; i++)
 		{
 			cout << "scoreArray[" << i << "] = " << scoreArray[i] << endl;
